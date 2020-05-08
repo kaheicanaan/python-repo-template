@@ -14,14 +14,6 @@ print("""
 if __name__ == '__main__':
     packageName = 'sample_repo'
 
-    # requirements
-    try:
-        with open("requirements.txt", 'r') as file:
-            requirement = file.readlines()
-    except FileNotFoundError:  # happened when install this package on other instance
-        with open(f"{packageName}.egg-info/requires.txt", 'r') as file:
-            requirement = file.readlines()
-
     # packages
     package_root = 'src'
     package_paths = find_packages(
@@ -41,5 +33,10 @@ if __name__ == '__main__':
         url='https://github.com/kaheicanaan/python-repo-template',
         packages=package_paths,
         keywords=['gbComp', 'Computation', 'pyComp'],
-        install_requires=requirement,
+        install_requires=[
+            'pandas==0.25.3'
+        ],
+        extras_require={
+            'restful': ['requests']
+        }
     )
