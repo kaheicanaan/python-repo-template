@@ -11,6 +11,7 @@ repo_name/
 │   │   ├── sub_package2
 │   │   ├── __init__.py
 │   ├── package2
+│   ├── conf.yaml
 │   ├── main.py
 │   └── run.py
 │
