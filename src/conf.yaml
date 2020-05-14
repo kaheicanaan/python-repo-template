@@ -1,0 +1,5 @@
+# sample config
+apiVersion: v1
+content:
+  c1: 1
+  c2: 2
