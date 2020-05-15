@@ -3,11 +3,11 @@ from setuptools import setup, find_packages
 print("""
 
 - upload
-    - build wheel: python setup1.py bdist_wheel
-    - upload to server: python setup.py sdist upload -r internal
+    - create source archive and build wheel: python setup.py sdist bdist_wheel
+    - upload to server: python setup.py sdist bdist_wheel upload -r internal
 
-- download
-    - Just pip install <package>
+- install
+    - pip install <packageName>
 
 """)
 
