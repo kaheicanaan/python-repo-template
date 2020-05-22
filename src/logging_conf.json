@@ -1,0 +1,68 @@
+// Example of setting up a standard logger.
+// This setting allows you to print log in console with colors AND write log into a file in JSON format.
+// "colorlog" and "python-json-logger" must be installed for aforementioned features.
+
+// Please make corresponding changes required and remove comments before using this template.
+{
+  "version": 1,
+  "disable_existing_loggers": false,
+  // Define log format
+  "formatters": {
+    // For json formatter, the format is ignored. Indicated fields will be add into json-log.
+    "json": {
+      "format": "%(asctime)s - %(levelname)s - %(message)s - %(name)s - %(module)s - %(filename)s - %(funcName)s",
+      "class": "pythonjsonlogger.jsonlogger.JsonFormatter"
+    },
+    // For color formatter, "log_color" is required to activate colored log.
+    "color": {
+      "format": "%(log_color)s %(asctime)s - %(levelname)s - %(message)s - %(name)s - %(module)s - %(filename)s - %(funcName)s",
+      "class": "colorlog.ColoredFormatter"
+    }
+  },
+  // Define how logs are handled.
+  "handlers": {
+    "console": {  // Display log to console
+      "level": "DEBUG",  // Level threshold that activate this handler
+      "formatter": "color",  // Coloring logs
+      "class": "logging.StreamHandler",
+      "stream": "ext://sys.stderr"  // Log to stderr
+    },
+    "file": {  // Store logs into a file
+      "level": "DEBUG",
+      "formatter": "json",  // Convert logs into json format
+      "class": "logging.handlers.TimedRotatingFileHandler",  // Define how logs are rotated
+      "filename": "test.log",  // Filepath for logs
+      // Rotating methods
+      "when": "D",
+      "backupCount": 3,
+      "utc": true
+    }
+  },
+  // Define loggers
+  "loggers": {
+    "": {  // Root logger
+      "handlers": [  // Handlers that applied to this logger
+        "console",
+        "file"
+      ],
+      "level": "WARNING",
+      "propagate": false
+    },
+    "comp_engine": {  // Logger for specified module (and its children, e.g. comp_engine.core)
+      "handlers": [
+        "console",
+        "file"
+      ],
+      "level": "DEBUG",
+      "propagate": false
+    },
+    "__main__": {
+      "handlers": [
+        "console",
+        "file"
+      ],
+      "level": "DEBUG",
+      "propagate": false
+    }
+  }
+}

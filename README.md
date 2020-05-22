@@ -12,6 +12,7 @@ repo_name/
 │   │   ├── __init__.py
 │   ├── package2
 │   ├── conf.yaml
+│   ├── logging_conf.json
 │   ├── main.py
 │   └── run.py
 │
