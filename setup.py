@@ -12,8 +12,6 @@ print("""
 """)
 
 if __name__ == '__main__':
-    packageName = 'sample_repo'
-
     # packages
     package_root = 'src'
     package_paths = find_packages(
